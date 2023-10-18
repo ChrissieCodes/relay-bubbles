@@ -1,11 +1,12 @@
 from flask import Flask
 import serial
 import serial.tools.list_ports
-
+import time
 
 app = Flask(__name__)
 
 
+@app.route("/serial/", methods=["GET"])
 def run_bubbles():
     with serial.Serial(
         "COM4", 115200, bytesize=8, parity="N", stopbits=1, timeout=1
